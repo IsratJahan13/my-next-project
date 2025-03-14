@@ -1,14 +1,18 @@
 const Header = () => {
   return (
-    <header>
-      <h2>My next.js project</h2>
+    <header className="bg-blue-500 text-white p-4">
+      <h2 className="text-xl">My next.js project</h2>
       <nav>
-        <ul>
+        <ul className="flex space-x-4">
           <li>
-            <a href="/">Home</a>
+            <a href="/" className="hover:text-blue-200">
+              Home
+            </a>
           </li>
           <li>
-            <a href="/about">About</a>
+            <a href="/about" className="hover:text-blue-200">
+              About
+            </a>
           </li>
         </ul>
       </nav>
