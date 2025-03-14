@@ -1,11 +1,11 @@
 import Header from '@/components/Header'
 
-const HomePage = () => {
+const AboutPage = () => {
   return (
     <div>
       <Header />
-      <h1>Welcome to the Home Page</h1>
+      <h1>About us</h1>
     </div>
   )
 }
-export default HomePage
+export default AboutPage
