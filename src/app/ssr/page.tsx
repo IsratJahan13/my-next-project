@@ -7,15 +7,15 @@ interface Post {
   body: string;
 }
 
-async function getPosts(): Promise<Post[]> {
+async function getSSR(): Promise<Post[]> {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
     cache: "no-store", // Ensures fresh data on every request
   });
   return res.json();
 }
 
-export default async function PostsPage() {
-  const posts = await getPosts();
+export default async function SSRPage() {
+  const posts = await getSSR();
 
   return (
     <div className="p-10">
