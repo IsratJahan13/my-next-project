@@ -10,6 +10,7 @@ const Header = () => {
         <Link href="/about" className="hover:underline">About</Link>
         <Link href="/ssr" className="hover:underline">Posts (SSR)</Link>
         <Link href="/isr" className="hover:underline">Posts (ISR)</Link>
+        <Link href="/contact" className="hover:underline">Contact Us</Link>
       </div>
     </div>
   </nav>
