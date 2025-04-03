@@ -1,11 +1,16 @@
+"use client"
+
 import Header from "@/components/Header";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
+
+import { submitContactForm } from "./actions";
 
 const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
@@ -14,13 +19,19 @@ const formSchema = z.object({
 })
 
 export default function ContactPage() {
+    const [successMessage, setSuccessMessage] = useState("");
+
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {name: "", email: "", message: ""}
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log("Form submitted:", values);
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        const response = await submitContactForm(values)
+        if(response.success) {
+            setSuccessMessage(response.message)
+            form.reset()
+        }
     }
     return (
         <div>
@@ -59,7 +70,7 @@ export default function ContactPage() {
                         <Button type="submit" className="w-full">Send Message</Button>
                     </form>
                 </Form>
-                
+                {successMessage && <p className="text-green-500 text-center mt-4">{successMessage}</p>}
             </div>
         </div>
     )
