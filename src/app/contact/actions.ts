@@ -19,5 +19,5 @@ export async function submitContactForm(data: z.infer<typeof formSchema>) {
     return { success: true, message: "Message sent successfully!" };
   } catch (error) {
     return { success: false, message: "Validation failed!" };
-  }
+  } //terminal check for new terminal setup
 }
